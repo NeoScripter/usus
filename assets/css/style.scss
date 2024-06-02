@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'Bold';
+    src: url(../fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Medium';
+    src: url(../fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Thin';
+    src: url(../fonts/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: 'Light';
+    src: url(../fonts/Roboto-Light.ttf);
+}
+
+$field-bg-color: #2a2a29;
+$field-bg-color-hover: #40403e;
+$text-color: #fff;
+$primary-bg-color: #000;
+$login-bg-color: #304b78;
+$signup-bg-color: #D2416A;
+$fs-huge: clamp(24px, 3vw, 50px);
+$fs-large: clamp(20px, 2.7vw, 46px);
+$fs-medium-large: clamp(18px, 2vw, 40px);
+$fs-medium: clamp(14px, 1.5vw, 30px);
+$fs-medium-small: clamp(14px, 1.2vw, 20px);
+$fs-small: clamp(8px, 0.8vw, 16px);
+
+@mixin flex-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin list-style {
+    list-style: none;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    color: $text-color;
+    font-family: 'Regular';
+    background-color: $primary-bg-color;
+}
+
+.main-outer-wrapper {
+    @include flex-centered();
+    flex-direction: column;
+}
+
+.main-header {
+    @include flex-space-between();
+    width: 100%;
+    padding: 2vw 4vw;
+    .logo-wrapper {
+
+        h1 {
+            font-size: $fs-huge;
+            font-family: 'Bold';
+            letter-spacing: 0.02em;
+        }
+    }
+    .btn-wrapper {
+        a {
+            display: block;
+            @include flex-space-between();
+            text-decoration: none;
+            color: $text-color;
+            font-family: 'Medium';
+            font-size: $fs-medium;
+
+            .signup {
+                background-color: $signup-bg-color;
+                border-radius: 0.6em 0 0 0.6em;
+            }
+            .login {
+                background-color: $login-bg-color;
+                border-radius: 0 0.6em 0.6em 0;
+            }
+        }
+        a * {
+            @include flex-centered();
+            padding: 0.2em 0.8em;
+            box-shadow: 
+            4px 4px 6px rgba(0,0,0,0.8),
+            inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+            inset -3px -3px 5px rgba(0, 0, 0, 0.7);
+            background-image: 
+                linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.15) 100%);
+            background-position: top left;
+        }
+    }
+}
+
+.options {
+    padding-inline: 2em;
+    @include flex-centered();
+    flex-direction: column;
+    .desc {
+        max-width: 70%;
+        margin-top: 2vw;
+        p {
+            font-size: $fs-medium;
+            margin-bottom: 1em;
+        }
+        h2 {
+            font-size: $fs-large;
+            font-family: 'Bold';
+            line-height: 1.2;
+        }
+    }
+    .grid-group {
+        margin-top: 3em;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2em;
+
+        @media (max-width: 550px) {
+            grid-template-columns: 1fr;
+            gap: 1em;
+            margin-top: 1em;
+        }
+    }
+    
+    .grid-group > * {
+        background-color: $field-bg-color;
+        color: $text-color;
+        font-family: 'Medium';
+        font-size: $fs-medium;
+        padding: 0.8em 1.6em;
+        box-shadow: 
+        4px 4px 6px rgba(0,0,0,0.8),
+        inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+        inset -3px -3px 5px rgba(0, 0, 0, 0.7);
+        background-image: 
+            linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.15) 100%);
+        background-position: top left;
+        @include flex-centered();
+        border-radius: 0.5em 0.5em 3em 0.5em;
+        cursor: pointer;
+    }
+
+    .grid-group > *:hover {
+        background-color: $field-bg-color-hover;
+    }
+    .option-parent {
+        position: relative;
+        border-radius: 0.5em;
+        .option-child {
+            display: none;
+            position: absolute;
+            bottom: -120%;
+            left: 0;
+            width: 100%;
+            border-radius: 0.5em;
+            background-color: #fff;
+            font-family: 'Regular';
+
+            ul {
+                @include flex-centered();
+                flex-direction: column;
+                padding: 0.2em;
+
+                li {
+                    color: #000;
+                    @include list-style();
+                    padding-block: 0.1em;
+                    width: 80%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .option-parent-link {
+        text-decoration: none;
+    }
+} 
