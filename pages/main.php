@@ -35,8 +35,8 @@
                         Мероприятия
                         <div class="option-child">
                             <ul>
-                                <li><a href=""></a>Создать &#x2192;</li>
-                                <li><a href=""></a>Отчеты &#x2192;</li>
+                                <li><a href="">Создать &#x2192;</a></li>
+                                <li><a href="">Отчеты &#x2192;</a></li>
                             </ul>
                         </div>
                     </div>

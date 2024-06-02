@@ -127,17 +127,23 @@ body {
             font-family: 'Bold';
             line-height: 1.2;
         }
+        @media (max-width: 500px) {
+            max-width: 90%;
+        }
     }
     .grid-group {
-        margin-top: 3em;
+        margin-top: 5em;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2em;
 
+        @media (max-width: 870px) {
+            margin-top: 2em;
+        }
+
         @media (max-width: 550px) {
             grid-template-columns: 1fr;
             gap: 1em;
-            margin-top: 1em;
         }
     }
     
@@ -181,11 +187,21 @@ body {
                 padding: 0.2em;
 
                 li {
-                    color: #000;
                     @include list-style();
                     padding-block: 0.1em;
                     width: 80%;
                     text-align: center;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;                    
+                    }
+
+                    a:hover {
+                        text-decoration-line: underline;
+                        text-decoration-thickness: 0.06em;
+                        text-underline-offset: 0.4em;
+                    }
                 }
             }
         }
