@@ -29,9 +29,9 @@
                     <div class="signup">Регистрация</div>
                     <div class="login">Вход</div>
                 </a>
-                <div style="display: <?php echo ($first_name === '') ? 'none' : 'flex';?>;">
+                <div class="login-nav-menu" style="display: <?php echo ($first_name === '') ? 'none' : 'flex';?>;">
                     <div class="greeting">Здравствуйте, <?php echo $first_name;?></div>
-                    <a href="../includes/logout.php" class="logout">Выйти</a>
+                    <a href="../includes/logout.inc.php" class="logout">Выйти</a>
                 </div>
             </div>
         </header>

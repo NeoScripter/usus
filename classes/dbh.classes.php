@@ -30,7 +30,7 @@ class Dbh {
                 users_id int(11) AUTO_INCREMENT PRIMARY KEY not null,
                 users_uid TINYTEXT not null,
                 users_pwd LONGTEXT not null,
-                users_email TINYTEXT not null,
+                users_company TINYTEXT not null,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 

@@ -11,5 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = new LoginContr($uid, $pwd);
 
     $login->loginUser();
-    header("location: ../index.php");
+    $_SESSION["login_success"] = true;
+    header("location: ../pages/main.php");
+    exit();
 }

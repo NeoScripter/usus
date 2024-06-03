@@ -5,7 +5,7 @@ class Login extends Dbh {
     protected function getUser($uid, $pwd) {
         $stmt = $this->connect()->prepare('SELECT users_pwd FROM users WHERE users_uid = ?;');
 
-        if (!$stmt->execute(array($uid, $pwd))) {
+        if (!$stmt->execute(array($uid))) {
             $stmt = null;
             $_SESSION["login_errors"] = "Не удалось подключиться к базе данных";
             header('location: ../pages/reg.php');
@@ -24,13 +24,14 @@ class Login extends Dbh {
         
         if ($checkPwd == false) {
             $stmt = null;
-            $_SESSION["login_errors"] = "Неверный пароль";
+            $_SESSION["login_errors"] = "Неверные имя пользователя или пароль";
             header('location: ../pages/reg.php');
             exit();
         } elseif ($checkPwd == true) {
-            $stmt = $this->connect()->prepare('SELECT * FROM users WHERE users_uid = ? AND users_pwd = ?;');
+            echo 'Password verified';
+            $stmt = $this->connect()->prepare('SELECT * FROM users WHERE users_uid = ?;');
 
-            if (!$stmt->execute(array($uid, $pwd))) {
+            if (!$stmt->execute(array($uid))) {
                 $stmt = null;
                 $_SESSION["login_errors"] = "Не удалось подключиться к базе данных";
                 header('location: ../pages/reg.php');

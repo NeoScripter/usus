@@ -2,7 +2,14 @@
     session_start();
     $login_errors = isset($_SESSION["login_errors"]) ? $_SESSION["login_errors"] : '';
     $signup_errors = isset($_SESSION["signup_errors"]) ? $_SESSION["signup_errors"] : '';
-    unset($_SESSION["login_errors"], $_SESSION["signup_errors"]);
+    if (isset($_SESSION["login_errors"])) {
+        echo '<script>alert("Ошибка входа: ' . $login_errors . '!")</script>';
+    } elseif (isset($_SESSION["signup_errors"])) {
+        echo '<script>alert("Ошибка регистрации: ' . $signup_errors . '!")</script>';
+    } elseif (isset($_SESSION["signup_success"])) {
+        echo '<script>alert("Пользователь успешно зарегистрирован!")</script>';
+    }
+    unset($_SESSION["login_errors"], $_SESSION["signup_errors"], $_SESSION["signup_success"]);
 
     if (isset($_SESSION["useruid"])) {
         header("location: main.php");
@@ -32,7 +39,7 @@
                 <h1>USUS</h1>
             </div>
             <div class="btn-wrapper">
-                <a href="main.php">
+                <a href="main.php" class="back-btn">
                     Назад
                 </a>
             </div>
@@ -46,7 +53,7 @@
                 <div class="main-signup form-wrapper">
                     <h3>Зарегистрироваться</h3>
                     <p>Введите ваши данные для регистрации</p>
-                    <form action="../includes/signup.inc.php" method="post" class="signup-form">
+                    <form action="../includes/signup.inc.php" method="post" class="signup-form" autocomplete="on">
                         <input type="text" name="uid" placeholder="ФИО">
                         <input type="password" name="pwd" placeholder="Пароль">
                         <input type="password" name="pwdrepeat" placeholder="Повторите пароль">
@@ -56,17 +63,15 @@
                                 <option value="<?php echo $company['company_name'];?>"><?php echo $company['company_name'];?></option>
                             <?php endforeach;?>
                         </select>
-                        <p class="errors-signup"><?php echo $signup_errors ;?></p>
                         <button type="submit" name="submit" class="submit-btn">Создать</button>
                     </form>
                 </div>
                 <div class="main-login form-wrapper">
                     <h3>Войти</h3>
                     <p>Нет аккаунта? Создайте учетную запись!</p>
-                    <form action="../includes/login.inc.php" method="post" class="login-form">
+                    <form action="../includes/login.inc.php" method="post" class="login-form" autocomplete="on">
                         <input type="text" name="uid" placeholder="Имя">
                         <input type="password" name="pwd" placeholder="Пароль">
-                        <p class="errors-login"><?php echo $login_errors ;?></p>
                         <button type="submit" name="submit" class="submit-btn">Войти</button>
                     </form>
                 </div>
