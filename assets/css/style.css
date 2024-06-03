@@ -47,8 +47,7 @@ body {
   font-family: "Bold";
   letter-spacing: 0.02em;
 }
-.main-header .btn-wrapper a {
-  display: block;
+.main-header .btn-wrapper a, .main-header .btn-wrapper div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,11 +56,11 @@ body {
   font-family: "Medium";
   font-size: clamp(14px, 1.5vw, 30px);
 }
-.main-header .btn-wrapper a .signup {
+.main-header .btn-wrapper a .signup, .main-header .btn-wrapper div .signup {
   background-color: #D2416A;
   border-radius: 0.6em 0 0 0.6em;
 }
-.main-header .btn-wrapper a .login {
+.main-header .btn-wrapper a .login, .main-header .btn-wrapper div .login {
   background-color: #304b78;
   border-radius: 0 0.6em 0.6em 0;
 }

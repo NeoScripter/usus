@@ -80,8 +80,7 @@ body {
         }
     }
     .btn-wrapper {
-        a {
-            display: block;
+        a, div {
             @include flex-space-between();
             text-decoration: none;
             color: $text-color;
