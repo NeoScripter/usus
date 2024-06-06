@@ -284,7 +284,10 @@ body {
 }
 
 .event-form-wrapper {
-    @include flex-centered();
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2em;
 }
 
 .create-event-form {
@@ -336,4 +339,17 @@ p.errors {
 
 .error {
     color: red;
+}
+
+.preparation-form {
+    @extend .create-event-form;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.prep-form-btn {
+    @extend .event-form-btn;
 }

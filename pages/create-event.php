@@ -11,6 +11,12 @@
         echo '<script>alert("Мероприятие успешно создано!")</script>';
     }
     unset($_SESSION['event-error'], $_SESSION['event-success']);
+
+    include_once "../classes/dbh.classes.php";
+    include_once "../classes/dbh.handler.classes.php";
+
+    $dbhhandler = new DbhHandler();
+    $preps = $dbhhandler->fetchPreps();
 ;?>
         <main>
             <section class="event-form-wrapper">
@@ -42,6 +48,14 @@
                     </select>
                     <p class="errors"><?php echo $event_errors ;?></p>
                     <button type="submit" class="event-form-btn">Создать</button>
+                </form>
+                <form action="../includes/prep.inc.php" class="preparation-form" method="post">
+                    <div class="checkbox-group">
+                        <?php foreach($preps as $prep):?>
+                            <label><input type="checkbox" name="preps[]" value="<?php echo $prep['prep_name']; ?>"> <?php echo $prep['prep_name']; ?></label>
+                        <?php endforeach;?>
+                    </div>
+                    <button type="submit" class="prep-form-btn">Скачать</button>
                 </form>
             </section>
         </main>

@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['event-error'] = $event->error;
             header("Location: ../pages/create-event.php");
+            exit();
         }
     } else {
         if (isAjaxRequest()) {
@@ -32,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['event-success'] = 'Мероприятие успешно создано!';
             header("Location: ../pages/create-event.php");
+            exit();
         }
     }
     exit();

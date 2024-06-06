@@ -251,11 +251,12 @@ body {
 
 .event-form-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2em;
 }
 
-.create-event-form {
+.create-event-form, .preparation-form {
   background-color: #2a2a29;
   display: flex;
   flex-direction: column;
@@ -264,13 +265,15 @@ body {
   padding: 1em;
   border-radius: 0.5em;
 }
-.create-event-form input,
+.create-event-form input, .preparation-form input,
 .create-event-form select,
-.create-event-form option {
+.preparation-form select,
+.create-event-form option,
+.preparation-form option {
   padding-inline: 0.5em;
 }
 
-.event-form-btn {
+.event-form-btn, .prep-form-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,6 +310,11 @@ p.errors {
 
 .error {
   color: red;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */
