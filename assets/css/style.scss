@@ -292,4 +292,38 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
+
+    input,
+    select,
+    option {
+        padding-inline: 0.5em;
+    }
+}
+
+.event-form-btn {
+    @include flex-centered();
+    padding: 0.2em 0.5em;
+    margin-inline: auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5em;
+    margin-top: 1em;
+}
+
+.main-page-link {
+    @include flex-space-between();
+    text-decoration: none;
+    color: $text-color;
+    font-family: 'Medium';
+    font-size: $fs-medium;
+}
+
+.main-page-link:hover,
+.main-page-link:focus {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.4em;
 }

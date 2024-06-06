@@ -260,6 +260,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0.5em;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+.create-event-form input,
+.create-event-form select,
+.create-event-form option {
+  padding-inline: 0.5em;
+}
+
+.event-form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em 0.5em;
+  margin-inline: auto;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5em;
+  margin-top: 1em;
+}
+
+.main-page-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Medium";
+  font-size: clamp(14px, 1.5vw, 30px);
+}
+
+.main-page-link:hover,
+.main-page-link:focus {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.4em;
 }
 
 /*# sourceMappingURL=style.css.map */

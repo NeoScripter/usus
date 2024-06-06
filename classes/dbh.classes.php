@@ -39,8 +39,19 @@ class Dbh {
                 company_name LONGTEXT not null
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 
+            $createTableEvents = "CREATE TABLE IF NOT EXISTS events (
+                event_id int(11) AUTO_INCREMENT PRIMARY KEY not null,
+                event_name TINYTEXT not null,
+                event_start_date DATE not null,
+                event_end_date DATE not null,
+                event_venue TINYTEXT not null,
+                event_frequency TINYTEXT not null,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+
             $dbh->exec($createTableUsers);
             $dbh->exec($createTableCompanies);
+            $dbh->exec($createTableEvents);
 
             return $dbh;
 

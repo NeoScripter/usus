@@ -24,6 +24,9 @@
             <div class="logo-wrapper">
                 <h1>USUS</h1>
             </div>
+            <div class="login-nav-menu">
+                <a href="main.php" class="main-page-link">Главная</a>
+            </div>
             <div class="btn-wrapper">
                 <a href="reg.php" style="display: <?php echo ($first_name === '') ? 'flex' : 'none';?>;">
                     <div class="signup">Регистрация</div>
