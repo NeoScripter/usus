@@ -310,7 +310,7 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 0.5em;
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 .main-page-link {
@@ -326,4 +326,14 @@ body {
     text-decoration-line: underline;
     text-decoration-thickness: 0.06em;
     text-underline-offset: 0.4em;
+}
+
+p.errors {
+    color: red;
+    text-align: center;
+    max-width: 320px;
+}
+
+.error {
+    color: red;
 }

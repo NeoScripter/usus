@@ -1,7 +1,11 @@
-<?php 
+<?php
+session_start();
+
+function isAjaxRequest() {
+    return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    session_start();
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
     $start_date = htmlspecialchars($_POST['start-date'], ENT_QUOTES, 'UTF-8');
     $end_date = htmlspecialchars($_POST['end-date'], ENT_QUOTES, 'UTF-8');
@@ -16,14 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $event->updateEventsTable($name, $start_date, $end_date, $venue, $frequency);
 
     if ($event->error !== '') {
-        $_SESSION['event-error'] = $event->error;
-        header("location: ../pages/create-event.php");
-        exit();
+        if (isAjaxRequest()) {
+            echo json_encode(['success' => false, 'error' => $event->error]);
+        } else {
+            $_SESSION['event-error'] = $event->error;
+            header("Location: ../pages/create-event.php");
+        }
     } else {
-        $_SESSION['event-created'] = true;
-        header("location: ../pages/create-event.php");
-        exit();
+        if (isAjaxRequest()) {
+            echo json_encode(['success' => true, 'message' => 'Мероприятие успешно создано!']);
+        } else {
+            $_SESSION['event-success'] = 'Мероприятие успешно создано!';
+            header("Location: ../pages/create-event.php");
+        }
     }
+    exit();
 } else {
-    header("location: ../pages/main.php");
+    header("Location: ../pages/main.php");
+    exit();
 }
+?>

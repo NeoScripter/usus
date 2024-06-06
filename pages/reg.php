@@ -2,11 +2,7 @@
     session_start();
     $login_errors = isset($_SESSION["login_errors"]) ? $_SESSION["login_errors"] : '';
     $signup_errors = isset($_SESSION["signup_errors"]) ? $_SESSION["signup_errors"] : '';
-    if (isset($_SESSION["login_errors"])) {
-        echo '<script>alert("Ошибка входа: ' . $login_errors . '!")</script>';
-    } elseif (isset($_SESSION["signup_errors"])) {
-        echo '<script>alert("Ошибка регистрации: ' . $signup_errors . '!")</script>';
-    } elseif (isset($_SESSION["signup_success"])) {
+    if (isset($_SESSION["signup_success"])) {
         echo '<script>alert("Пользователь успешно зарегистрирован!")</script>';
     }
     unset($_SESSION["login_errors"], $_SESSION["signup_errors"], $_SESSION["signup_success"]);
@@ -63,6 +59,7 @@
                                 <option value="<?php echo $company['company_name'];?>"><?php echo $company['company_name'];?></option>
                             <?php endforeach;?>
                         </select>
+                        <p class="errors"><?php echo $signup_errors ;?></p>
                         <button type="submit" name="submit" class="submit-btn">Создать</button>
                     </form>
                 </div>
@@ -72,6 +69,7 @@
                     <form action="../includes/login.inc.php" method="post" class="login-form" autocomplete="on">
                         <input type="text" name="uid" placeholder="Имя">
                         <input type="password" name="pwd" placeholder="Пароль">
+                        <p class="errors"><?php echo $login_errors ;?></p>
                         <button type="submit" name="submit" class="submit-btn">Войти</button>
                     </form>
                 </div>

@@ -4,16 +4,17 @@
         header("location: reg.php");
     }
 
+    $event_errors = '';
     if (isset($_SESSION['event-error'])) {
-        echo '<script>alert("Ошибка: ' . $_SESSION['event-error'] . '")</script>';
-    } elseif (isset($_SESSION['event-created'])) {
+        $event_errors = $_SESSION['event-error'];
+    } elseif (isset($_SESSION['event-success'])) {
         echo '<script>alert("Мероприятие успешно создано!")</script>';
     }
-    unset($_SESSION['event-error'], $_SESSION['event-created']);
+    unset($_SESSION['event-error'], $_SESSION['event-success']);
 ;?>
         <main>
             <section class="event-form-wrapper">
-                <form action="../includes/event.inc.php" class="create-event-form" method="post">
+                <form action="../includes/event.inc.php" class="create-event-form" method="post" id="eventForm">
                     <label for="name">Укажите название мероприятия</label>
                     <input type="text" name="name">
                     <label for="start-date">Выберите дату начала мероприятия</label>
@@ -39,10 +40,12 @@
                         <option value="Ежегодное">Ежегодное</option>
                         <option value="Разовое">Разовое</option>
                     </select>
+                    <p class="errors"><?php echo $event_errors ;?></p>
                     <button type="submit" class="event-form-btn">Создать</button>
                 </form>
             </section>
         </main>
     </div>
+    <script src="../assets/js/ajax-event-hd.js"></script>
 </body>
 </html>

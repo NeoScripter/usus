@@ -103,7 +103,7 @@ class EventsContr extends Events {
     
     private function checkEventDateOrder($eventStartDate, $eventEndDate) {
         $result;
-        if (strtotime($eventStartDate) >= strtotime($eventEndDate)) {
+        if (strtotime($eventStartDate) > strtotime($eventEndDate)) {
             $result = true; // The event start date is not earlier than the event end date
         } else {
             $result = false;
