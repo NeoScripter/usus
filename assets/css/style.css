@@ -317,4 +317,102 @@ p.errors {
   flex-direction: column;
 }
 
+/* Calendar */
+.calendar-form-wrapper {
+  padding: 1em;
+}
+
+.calendar-group {
+  display: flex;
+  gap: 2em;
+}
+
+#calendar {
+  width: 50%;
+}
+
+#events {
+  width: 50%;
+}
+
+@media (max-width: 550px) {
+  .calendar-group {
+    flex-direction: column;
+  }
+  #calendar {
+    width: 100%;
+  }
+  #events {
+    width: 100%;
+  }
+}
+.header-cal {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.header-cal button {
+  margin: 0 10px;
+  padding: 5px 10px;
+  width: 2em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.header-cal {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.days-row {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.dates-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.date-cell {
+  width: 14.28%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+}
+
+.date-cell.event-date {
+  background-color: #2a2a29;
+}
+
+.date-cell:hover {
+  background-color: #40403e;
+}
+
+#events {
+  margin-top: 20px;
+}
+
+#events div {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 /*# sourceMappingURL=style.css.map */

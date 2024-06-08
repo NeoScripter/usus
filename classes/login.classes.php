@@ -28,7 +28,6 @@ class Login extends Dbh {
             header('location: ../pages/reg.php');
             exit();
         } elseif ($checkPwd == true) {
-            echo 'Password verified';
             $stmt = $this->connect()->prepare('SELECT * FROM users WHERE users_uid = ?;');
 
             if (!$stmt->execute(array($uid))) {
