@@ -10,11 +10,6 @@ if ($first_name === '') {
     header("location: reg.php");
     exit();
 }
-
-include_once "../classes/dbh.classes.php";
-include_once "../classes/dbh.handler.classes.php";
-
-$dbhhandler = new DbhHandler();
 ?>
 <!DOCTYPE html>
 <html lang="en">

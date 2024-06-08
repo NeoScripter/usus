@@ -25,10 +25,24 @@ class DbhHandler extends Dbh {
     }
     public function fetchEventDates() {
         try {
-            $sql = "SELECT DISTINCT event_start_date FROM events";
+            $sql = "SELECT event_start_date, event_end_date FROM events";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_COLUMN);
+            $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $dates = [];
+            foreach ($events as $event) {
+                $startDate = new DateTime($event['event_start_date']);
+                $endDate = new DateTime($event['event_end_date']);
+                $interval = DateInterval::createFromDateString('1 day');
+                $period = new DatePeriod($startDate, $interval, $endDate->modify('+1 day'));
+
+                foreach ($period as $date) {
+                    $dates[] = $date->format('Y-m-d');
+                }
+            }
+
+            return array_values(array_unique($dates));
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;
@@ -37,7 +51,7 @@ class DbhHandler extends Dbh {
 
     public function fetchEventsByDate($date) {
         try {
-            $sql = "SELECT * FROM events WHERE event_start_date = :event_date";
+            $sql = "SELECT * FROM events WHERE :event_date BETWEEN event_start_date AND event_end_date";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute(['event_date' => $date]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -46,4 +60,5 @@ class DbhHandler extends Dbh {
             return false;
         }
     }
+    
 }

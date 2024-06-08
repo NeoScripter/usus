@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-
     function generateCalendar(year, month, eventDates) {
         calendar.innerHTML = '';
         const firstDay = new Date(year, month, 1).getDay();
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const dateCell = document.createElement('div');
             dateCell.className = 'date-cell';
             const currentDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-            
+
             if (eventDates.includes(currentDate)) {
                 dateCell.classList.add('event-date');
             }
