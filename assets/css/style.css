@@ -256,7 +256,8 @@ body {
   gap: 2em;
 }
 
-.create-event-form, .preparation-form {
+.create-event-form, .preparation-form,
+.docs-form {
   background-color: #2a2a29;
   display: flex;
   flex-direction: column;
@@ -269,7 +270,10 @@ body {
 .create-event-form select,
 .preparation-form select,
 .create-event-form option,
-.preparation-form option {
+.preparation-form option,
+.docs-form input,
+.docs-form select,
+.docs-form option {
   padding-inline: 0.5em;
 }
 
@@ -413,6 +417,28 @@ p.errors {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.docs-heading {
+  text-transform: uppercase;
+}
+
+.docs-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.docs-form label {
+  text-transform: uppercase;
+}
+
+.docs-form select {
+  margin-inline: auto;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

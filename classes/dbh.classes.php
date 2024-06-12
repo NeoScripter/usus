@@ -54,10 +54,18 @@ class Dbh {
                 prep_name TINYTEXT not null
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 
+            $createTableTemplates = "CREATE TABLE IF NOT EXISTS templates (
+                template_id int(11) AUTO_INCREMENT PRIMARY KEY not null,
+                template_name TINYTEXT not null,
+                template_url TINYTEXT not null,
+                template_menu TINYTEXT not null
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+
             $dbh->exec($createTableUsers);
             $dbh->exec($createTableCompanies);
             $dbh->exec($createTableEvents);
             $dbh->exec($createTablePreps);
+            $dbh->exec($createTableTemplates);
 
             return $dbh;
 

@@ -23,6 +23,17 @@ class DbhHandler extends Dbh {
             return false;
         }
     }
+    public function fetchTemplates() {
+        try {
+            $sql = "SELECT * FROM templates";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
     public function fetchEventDates() {
         try {
             $sql = "SELECT event_start_date, event_end_date FROM events";

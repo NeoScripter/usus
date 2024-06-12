@@ -32,7 +32,7 @@ $preps = $dbhhandler->fetchPreps();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUS</title>
     <link rel="stylesheet" href="../assets/css/reset.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../assets/js/jquery.js"></script>
 </head>

@@ -290,7 +290,8 @@ body {
     gap: 2em;
 }
 
-.create-event-form {
+.create-event-form,
+.docs-form {
     background-color: $field-bg-color;
     display: flex;
     flex-direction: column;
@@ -453,4 +454,27 @@ p.errors {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.docs-heading {
+    text-transform: uppercase;
+
+}
+
+.docs-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    margin-top: 1em;
+}
+
+.docs-form label {
+    text-transform: uppercase;
+}
+
+.docs-form select {
+    margin-inline: auto;
+    text-align: center;
 }
