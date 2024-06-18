@@ -1,16 +1,15 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $templatePath = $_POST['doc-name'];
-    $content = file_get_contents($templatePath);
 
-    header("Content-type: application/vnd.ms-word");
-    header("Content-Disposition: attachment;Filename=document.doc");
+    $directory = '../templates/';
+    $fullPath = $directory . $templatePath;
 
-    ob_start();
-    echo $content;
+    header("Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    header("Content-Disposition: attachment; filename=\"" . basename($fullPath) . "\"");
+    header("Content-Length: " . filesize($fullPath));
 
-    $output = ob_get_clean();
-
-    echo $content;
+    readfile($fullPath);
     exit;
 }
