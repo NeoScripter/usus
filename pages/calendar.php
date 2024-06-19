@@ -24,16 +24,25 @@ if ($first_name === '') {
     <div class="main-outer-wrapper">
         <header class="main-header">
             <div class="logo-wrapper">
-                <h1><a href="main.php" class="main-page-link">USUS</a></h1>
+                <h1><a href="main.php" class="main-page-link"><img src="../assets/images/svgs/logo-small.svg" alt="logo" class="logo-mobile-heading">USUS</a></h1>
+                <a href="main.php" class="main-page-link__arrow"><img src="../assets/images/svgs/arrow-left.svg" alt="logo"></a>
             </div>
             <div class="btn-wrapper">
-                <a href="reg.php" class="login" style="display: <?php echo ($first_name === '') ? 'flex' : 'none';?>;">
+                <div class="login-nav-menu nav-desktop" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                    <div class="greeting">Добро пожаловать, <?php echo $first_name . '!';?></div>
+                </div>
+                <a href="reg.php" class="login nav-desktop" style="display: <?php echo ($first_name === '') ? '' : 'none';?>;">
                     <img src="../assets/images/svgs/user-right-01.svg" alt="user">Вход
                 </a>
-                <div class="login-nav-menu" style="display: <?php echo ($first_name === '') ? 'none' : 'flex';?>;">
-                    <div class="greeting">Здравствуйте, <?php echo $first_name;?></div>
-                    <a href="../includes/logout.inc.php" class="logout">Выйти</a>
-                </div>
+                <a href="../includes/logout.inc.php" class="login nav-desktop" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                    <img src="../assets/images/svgs/user-right-01.svg" alt="user">Выйти
+                </a>
+                <a href="reg.php" class="login-mobile nav-mobile" style="display: <?php echo ($first_name === '') ? '' : 'none';?>;">
+                <img src="../assets/images/svgs/user-right-01.svg" alt="logo" class="logo-mobile">
+                </a>
+                <a href="../includes/logout.inc.php" class="login-mobile nav-mobile" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                <img src="../assets/images/svgs/arrow-left.svg" alt="logo" class="logo-mobile">
+                </a>
             </div>
         </header>
         <main>

@@ -19,11 +19,6 @@ if (isset($_SESSION['event-error'])) {
 }
 unset($_SESSION['event-error'], $_SESSION['event-success']);
 
-include_once "../classes/dbh.classes.php";
-include_once "../classes/dbh.handler.classes.php";
-
-$dbhhandler = new DbhHandler();
-$preps = $dbhhandler->fetchPreps();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,23 +30,33 @@ $preps = $dbhhandler->fetchPreps();
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <div class="main-outer-wrapper">
+    <div class="main-outer-wrapper main-leaf-left">
         <header class="main-header">
             <div class="logo-wrapper">
-                <h1><a href="main.php" class="main-page-link">USUS</a></h1>
+                <h1><a href="main.php" class="main-page-link"><img src="../assets/images/svgs/logo-small.svg" alt="logo" class="logo-mobile-heading">USUS</a></h1>
+                <a href="main.php" class="main-page-link__arrow"><img src="../assets/images/svgs/arrow-left.svg" alt="logo"></a>
             </div>
             <div class="btn-wrapper">
-                <a href="reg.php" class="login" style="display: <?php echo ($first_name === '') ? 'flex' : 'none';?>;">
+                <div class="login-nav-menu nav-desktop" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                    <div class="greeting">Добро пожаловать, <?php echo $first_name . '!';?></div>
+                </div>
+                <a href="reg.php" class="login nav-desktop" style="display: <?php echo ($first_name === '') ? '' : 'none';?>;">
                     <img src="../assets/images/svgs/user-right-01.svg" alt="user">Вход
                 </a>
-                <div class="login-nav-menu" style="display: <?php echo ($first_name === '') ? 'none' : 'flex';?>;">
-                    <div class="greeting">Здравствуйте, <?php echo $first_name;?></div>
-                    <a href="../includes/logout.inc.php" class="logout">Выйти</a>
-                </div>
+                <a href="../includes/logout.inc.php" class="login nav-desktop" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                    <img src="../assets/images/svgs/user-right-01.svg" alt="user">Выйти
+                </a>
+                <a href="reg.php" class="login-mobile nav-mobile" style="display: <?php echo ($first_name === '') ? '' : 'none';?>;">
+                <img src="../assets/images/svgs/user-right-01.svg" alt="logo" class="logo-mobile">
+                </a>
+                <a href="../includes/logout.inc.php" class="login-mobile nav-mobile" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
+                <img src="../assets/images/svgs/arrow-left.svg" alt="logo" class="logo-mobile">
+                </a>
             </div>
         </header>
         <main>
-            <section class="event-form-wrapper">
+            <section class="form-wrapper">
+                <h2>СОЗДАНИЕ МЕРОПРИЯТИЯ</h2>
                 <form action="../includes/event.inc.php" class="create-event-form" method="post" id="eventForm">
                     <label for="name">Укажите название мероприятия</label>
                     <input type="text" name="name">
@@ -80,14 +85,6 @@ $preps = $dbhhandler->fetchPreps();
                     </select>
                     <p class="errors"><?php echo $event_errors ;?></p>
                     <button type="submit" class="event-form-btn">Создать</button>
-                </form>
-                <form action="../includes/prep.inc.php" class="preparation-form" method="post">
-                    <div class="checkbox-group">
-                        <?php foreach($preps as $prep):?>
-                            <label><input type="checkbox" name="preps[]" value="<?php echo $prep['prep_name']; ?>"> <?php echo $prep['prep_name']; ?></label>
-                        <?php endforeach;?>
-                    </div>
-                    <button type="submit" class="prep-form-btn">Скачать</button>
                 </form>
             </section>
         </main>

@@ -30,11 +30,14 @@
     <div class="main-outer-wrapper">
         <header class="main-header">
             <div class="logo-wrapper">
-                <h1><a href="main.php" class="main-page-link">USUS</a></h1>
+                <h1><a href="main.php" class="main-page-link"><img src="../assets/images/svgs/logo-small.svg" alt="logo" class="logo-mobile-heading">USUS</a></h1>
             </div>
             <div class="btn-wrapper">
-                <a href="main.php" class="back-btn">
-                    Назад
+                <a href="main.php" class="login nav-desktop">
+                    <img src="../assets/images/svgs/arrow-left.svg" alt="user">На главную
+                </a>
+                <a href="main.php" class="login-mobile nav-mobile">
+                    <img src="../assets/images/svgs/arrow-left.svg" alt="logo" class="logo-mobile">
                 </a>
             </div>
         </header>

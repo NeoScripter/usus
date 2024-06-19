@@ -42,6 +42,7 @@ $fs-small: clamp(8px, 0.8vw, 16px);
     --5: 0.26vw;
     --box-shadow: inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4),
         inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4);
+    --box-shadow2: inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4), inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4);
 }
 
 
@@ -70,6 +71,7 @@ body {
     font-family: "Regular";
     background-color: $primary-bg-color;
     letter-spacing: 0.03em;
+    min-height: calc(100vh + 100px);
 }
 
 a {
@@ -94,6 +96,7 @@ li {
     box-shadow: 4px 4px 7px 2px rgba(0, 0, 0, 0.3);
     border-radius: 0 0 1em 1em;
     .logo-wrapper {
+        position: relative;
         h1 {
             font-size: var(--80);
             font-family: "Bold";
@@ -106,34 +109,55 @@ li {
             }
         }
     }
-    .btn-wrapper {
-        a.login {
-            background-color: $signup-bg-color;
-            @include flex-centered();
-            justify-content: flex-start;
-            padding: 0.4em 0.8em;
-            color: #fff;
-            font-family: "Regular";
-            text-decoration: none;
-            font-size: var(--25);
-            width: calc(var(--125) * 2.2);
-            img {
-                width: var(--25);
-                margin-right: 30%;
-            }
+}
 
-            transition: scale 0.2s ease-in-out;
-        }
+.main-page-link__arrow {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: calc(var(--55) * -3);
+    background-color: $field-bg-color;
+    border-radius: 50%;
+    width: var(--80);
+    aspect-ratio: 1;
+    @include flex-centered();
+}
 
-        a.login:focus,
-        a.login:hover {
-            scale: 1.1;
-        }
+.main-page-link__arrow img {
+    width: 80%;
+    aspect-ratio: 1;
+}
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+a.login {
+    background-color: $signup-bg-color;
+    @include flex-centered();
+    justify-content: flex-start;
+    padding: 0.4em 0.8em;
+    color: #fff;
+    font-family: "Regular";
+    text-decoration: none;
+    font-size: var(--25);
+    width: calc(var(--125) * 2.2);
+    img {
+        width: var(--25);
+        margin-right: 30%;
     }
+
+    transition: scale 0.2s ease-in-out;
+}
+
+a.login:focus,
+a.login:hover {
+    scale: 1.1;
 }
 
 .main-header .login-mobile {
-    display: none !important;
+    display: none;
 }
 
 .logo-mobile {
@@ -275,12 +299,145 @@ li {
     display: block;
 }
 
+.nav-mobile {
+    display: none;
+}
+
+.form-wrapper {
+    margin-top: var(--80);
+    padding-bottom: calc(var(--80) * 2);
+    h2 {
+        font-size: var(--55);
+        color: $field-bg-color;
+        font-family: 'Bold';
+        text-align: center;
+        margin-bottom: var(--5);
+    }
+    h3 {
+        color: #000;
+        font-size: calc(var(--30) *1.4);
+        font-family: 'Bold';
+        text-align: center;
+        margin-bottom: var(--15);
+    }
+    form {
+        background-color: rgb(237, 237, 237);
+        color: #000;
+        @include flex-centered();
+        flex-direction: column;
+        gap: 0.5em;
+        select {
+            max-width: 200px;
+        }
+        box-shadow: var(--box-shadow2);
+        border-radius: 2.5em;
+        padding: 2em;
+        position: relative;
+
+        button {
+            position: absolute;
+            left: 50%;
+            translate: -50%;
+            bottom: calc(var(--55) * -2);
+            font-size: var(--22);
+            padding: 0.8em 2em;
+            color: #fff;
+            border-radius: 1em;
+            letter-spacing: inherit;
+            background-color: $field-bg-color;
+            transition: scale 0.2s ease-in-out;
+        }
+        button:focus,
+        button:hover {
+            scale: 1.1;
+        }
+        label {
+            font-size: var(--22);
+            margin-bottom: 0.5em;
+        }
+    }
+    input {
+        padding-inline: 0.5em;
+    }
+}
+
+.docs-heading {
+    font-size: var(--55);
+    color: $field-bg-color;
+    font-family: 'Bold';
+    text-align: center;
+    margin-bottom: var(--5);
+    margin-top: var(--80);
+}
+
+.main-leaf-right {
+    background-image: url(../images/leaf-pattern-big-2.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 50%;
+    min-height: 100vh;
+}
+
+.main-leaf-left {
+    @extend .main-leaf-right;
+    background-position: left bottom;
+}
+
+.checkbox-group {
+    height: calc(var(--580) * 0.8);
+    overflow: scroll;
+    width: 100%;
+}
+
+.back-btn {
+    padding: 0.5em 1em;
+    background-color: $field-bg-color;
+    border-radius: 0.5em;
+}
+
+.submit-btn {
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+}
+
+.errors-signup {
+    color: red;
+}
+
+.greeting {
+    margin-right: 1.5em;
+    color: #fff;
+    font-family: 'Bold';
+}
+
+.logout {
+    background-color: rgb(46, 46, 73) !important;
+}
+
+.login-nav-menu .logout {
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+        inset -3px -3px 5px rgba(0, 0, 0, 0.7);
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.15) 30%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+    background-position: top left;
+}
+
+
 @media (max-width: 800px) {
-    .btn-wrapper {
-        display: none;
+    .nav-desktop {
+        display: none !important;
+    }
+    .nav-mobile {
+        display: flex;
     }
     .main-header .login-mobile {
-        display: block !important;
+        display: block;
     }
     .main-php__description {
         p {
@@ -314,108 +471,57 @@ li {
         display: inline;
         margin-right: 5px;
     }
+    .main-header .logo-wrapper {
+        position: static;
+    }
+    .main-page-link__arrow {
+        right: 50%;
+        translate: 50%;
+        bottom: -10%;
+        background-color: $field-bg-color;
+        width: 60px;
+    }
+    .docs-heading {
+        margin-top: 40px;
+        font-size: 25px;
+    }
+    .form-wrapper {
+        margin-top: 40px;
+        padding-bottom: calc(var(--80) * 2);
+        h2 {
+            font-size: 25px;
+
+        }
+        h3 {
+            font-size: 22px;
+            margin-bottom: var(--15);
+        }
+        form {
+            button {
+                bottom: -60px;
+                font-size: 16px;
+            }
+            label {
+                font-size: 16px;
+                margin-bottom: 0.5em;
+            }
+        }
+    }
+
+    .checkbox-group {
+        height: 250px;
+        width: 100%;
+    }
+
+    .main-leaf-right main {
+        width: min(350px, 95%);
+    }
 
     :root {
         --box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4),
         inset -5px -5px 5px rgba(0, 0, 0, 0.4);
-    }
-}
-
-.form-main-wrapper {
-    @include flex-space-between();
-    align-items: flex-start;
-    gap: 2em;
-    margin-top: 1em;
-
-    @media (max-width: 550px) {
-        flex-direction: column;
-        gap: 1em;
-    }
-}
-
-.form-wrapper {
-    @include flex-centered();
-    flex-direction: column;
-    padding: 1em 2em;
-    background-color: $field-bg-color;
-    gap: 0.2em;
-    border-radius: 0.5em;
-    p {
-        max-width: 200px;
-        line-height: 1.2;
-        margin-bottom: 0.2em;
-    }
-    form {
-        @include flex-centered();
-        flex-direction: column;
-        gap: 0.5em;
-        select {
-            max-width: 200px;
-        }
-    }
-    input {
-        padding-inline: 0.5em;
-    }
-}
-
-.back-btn {
-    padding: 0.5em 1em;
-    background-color: $field-bg-color;
-    border-radius: 0.5em;
-}
-
-.submit-btn {
-    padding: 0.25em 0.5em;
-    cursor: pointer;
-}
-
-.errors-signup {
-    color: red;
-}
-
-.greeting {
-    margin-right: 1.5em;
-}
-
-.logout {
-    background-color: rgb(46, 46, 73) !important;
-}
-
-.login-nav-menu .logout {
-    padding: 0.5em 1em;
-    border-radius: 0.5em;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.7),
-        inset -3px -3px 5px rgba(0, 0, 0, 0.7);
-    background-image: linear-gradient(
-        to bottom right,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.15) 30%,
-        rgba(0, 0, 0, 0.15) 100%
-    );
-    background-position: top left;
-}
-
-.event-form-wrapper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2em;
-}
-
-.create-event-form,
-.docs-form {
-    background-color: $field-bg-color;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5em;
-    padding: 1em;
-    border-radius: 0.5em;
-
-    input,
-    select,
-    option {
-        padding-inline: 0.5em;
+        --box-shadow2: inset -5px -5px 5px rgba(0, 0, 0, 0.4),
+        inset 5px 5px 5px rgba(255, 255, 255, 0.4);
     }
 }
 
@@ -442,10 +548,6 @@ p.errors {
 
 .error {
     color: red;
-}
-
-.preparation-form {
-    @extend .create-event-form;
 }
 
 .checkbox-group {
