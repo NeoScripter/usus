@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUS</title>
     <link rel="stylesheet" href="../assets/css/reset.min.css">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../assets/js/jquery.js"></script>
 </head>
@@ -32,7 +32,7 @@
     <div class="main-outer-wrapper">
         <header class="main-header">
             <div class="logo-wrapper">
-                <h1>USUS</h1>
+                <h1><a href="main.php" class="main-page-link">USUS</a></h1>
             </div>
             <div class="btn-wrapper">
                 <a href="main.php" class="back-btn">

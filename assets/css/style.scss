@@ -1,40 +1,70 @@
+
 @font-face {
-    font-family: 'Bold';
-    src: url(../fonts/Roboto-Bold.ttf);
+    font-family: "Regular";
+    src: url(../fonts/PTSansNarrow-Regular.woff2) format("woff2"),
+        url(../fonts/PTSansNarrow-Regular.woff) format("woff");
 }
 
 @font-face {
-    font-family: 'Regular';
-    src: url(../fonts/Roboto-Regular.ttf);
+    font-family: "Bold";
+    src: url(../fonts/PTSansNarrow-Bold.woff2) format("woff2"),
+        url(../fonts/PTSansNarrow-Bold.woff) format("woff");
 }
 
-@font-face {
-    font-family: 'Medium';
-    src: url(../fonts/Roboto-Medium.ttf);
-}
-
-@font-face {
-    font-family: 'Thin';
-    src: url(../fonts/Roboto-Thin.ttf);
-}
-
-@font-face {
-    font-family: 'Light';
-    src: url(../fonts/Roboto-Light.ttf);
-}
-
-$field-bg-color: #2a2a29;
+$field-bg-color: rgba(31, 136, 125, 1);
 $field-bg-color-hover: #40403e;
-$text-color: #fff;
-$primary-bg-color: #000;
+$text-color: hsl(174, 63%, 33%);
+$primary-bg-color: rgba(237, 237, 237, 1);
 $login-bg-color: #304b78;
-$signup-bg-color: #D2416A;
+$signup-bg-color: hsl(358, 78%, 50%);
 $fs-huge: clamp(24px, 3vw, 50px);
 $fs-large: clamp(20px, 2.7vw, 46px);
 $fs-medium-large: clamp(18px, 2vw, 40px);
 $fs-medium: clamp(14px, 1.5vw, 30px);
 $fs-medium-small: clamp(14px, 1.2vw, 20px);
 $fs-small: clamp(8px, 0.8vw, 16px);
+
+:root{
+    --835: 43.49vw;
+    --580: 30.21vw;
+    --125: 6.51vw;
+    --80: 4.17vw;
+    --55: 2.86vw;
+    --45: 2.34vw;
+    --42: 2.19vw;
+    --30: 1.56vw;
+    --25: 1.30vw;
+    --22: 1.15vw;
+    --20: 1.04vw;
+    --19: 0.99vw;
+    --18: 0.94vw;
+    --17: 0.89vw;
+    --15: 0.78vw;
+    --10: 0.52vw;
+    --5: 0.26vw;
+}
+
+@media (max-width: 800px) {
+    :root {
+        --835: 835px;
+        --580: 580px;
+        --125: 125px;
+        --80: 80px;
+        --55: 55px;
+        --45: 45px;
+        --42: 42px;
+        --30: 30px;
+        --25: 25px;
+        --22: 22px;
+        --20: 20px;
+        --19: 19px;
+        --18: 18px;
+        --17: 17px;
+        --15: 15px;
+        --10: 10px;
+        --5: 5px;
+    }
+}
 
 @mixin flex-centered {
     display: flex;
@@ -58,8 +88,9 @@ html {
 
 body {
     color: $text-color;
-    font-family: 'Regular';
+    font-family: "Regular";
     background-color: $primary-bg-color;
+    letter-spacing: 0.05em;
 }
 
 .main-outer-wrapper {
@@ -70,42 +101,44 @@ body {
 .main-header {
     @include flex-space-between();
     width: 100%;
-    padding: 2vw 4vw;
+    padding: 1em 2em;
+    background-color: $field-bg-color;
+    box-shadow: 4px 4px 7px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 1em 1em;
     .logo-wrapper {
-
         h1 {
-            font-size: $fs-huge;
-            font-family: 'Bold';
+            font-size: var(--80);
+            font-family: "Bold";
             letter-spacing: 0.02em;
+            color: #fff;
+
+            @media (max-width: 800px) {
+                font-size: 50px;
+            }
         }
     }
     .btn-wrapper {
-        a, div {
-            @include flex-space-between();
-            text-decoration: none;
-            color: $text-color;
-            font-family: 'Medium';
-            font-size: $fs-medium;
-
-            .signup {
-                background-color: $signup-bg-color;
-                border-radius: 0.6em 0 0 0.6em;
-            }
-            .login {
-                background-color: $login-bg-color;
-                border-radius: 0 0.6em 0.6em 0;
-            }
-        }
-        a * {
+        a.login {
+            background-color: $signup-bg-color;
             @include flex-centered();
-            padding: 0.2em 0.8em;
-            box-shadow: 
-            4px 4px 6px rgba(0,0,0,0.8),
-            inset 3px 3px 5px rgba(255, 255, 255, 0.7),
-            inset -3px -3px 5px rgba(0, 0, 0, 0.7);
-            background-image: 
-                linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.15) 100%);
-            background-position: top left;
+            justify-content: flex-start;
+            padding: 0.4em 0.8em;
+            color: #fff;
+            font-family: "Regular";
+            text-decoration: none;
+            font-size: var(--25);
+            width: calc(var(--125) * 2.2);
+            img {
+                width: var(--25);
+                margin-right: 30%;
+            }
+
+            transition: scale 0.2s ease-in-out;
+        }
+
+        a.login:focus,
+        a.login:hover {
+            scale: 1.1;
         }
     }
 }
@@ -123,7 +156,7 @@ body {
         }
         h2 {
             font-size: $fs-large;
-            font-family: 'Bold';
+            font-family: "Bold";
             line-height: 1.2;
         }
         @media (max-width: 500px) {
@@ -145,22 +178,24 @@ body {
             gap: 1em;
         }
     }
-    
+
     .grid-group > * {
         background-color: $field-bg-color;
-        color: $text-color;
-        font-family: 'Medium';
+        color: #fff;
+        font-family: "Regular";
         font-size: $fs-medium;
         padding: 0.8em 1.6em;
-        box-shadow: 
-        4px 4px 6px rgba(0,0,0,0.8),
-        inset 3px 3px 5px rgba(255, 255, 255, 0.7),
-        inset -3px -3px 5px rgba(0, 0, 0, 0.7);
-        background-image: 
-            linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.15) 100%);
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+            inset -3px -3px 5px rgba(0, 0, 0, 0.7);
+        background-image: linear-gradient(
+            to bottom right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.15) 30%,
+            rgba(0, 0, 0, 0.15) 100%
+        );
         background-position: top left;
         @include flex-centered();
-        border-radius: 0.5em 0.5em 3em 0.5em;
+        border-radius: 0.5em;
         cursor: pointer;
     }
 
@@ -178,7 +213,7 @@ body {
             width: 100%;
             border-radius: 0.5em;
             background-color: #fff;
-            font-family: 'Regular';
+            font-family: "Regular";
 
             ul {
                 @include flex-centered();
@@ -193,7 +228,7 @@ body {
 
                     a {
                         text-decoration: none;
-                        color: #000;                    
+                        color: #000;
                     }
 
                     a:hover {
@@ -208,14 +243,14 @@ body {
     .option-parent-link {
         text-decoration: none;
     }
-} 
+}
 
 .form-main-wrapper {
     @include flex-space-between();
     align-items: flex-start;
     gap: 2em;
     margin-top: 1em;
-    
+
     @media (max-width: 550px) {
         flex-direction: column;
         gap: 1em;
@@ -264,7 +299,6 @@ body {
 
 .greeting {
     margin-right: 1.5em;
-
 }
 
 .logout {
@@ -274,13 +308,15 @@ body {
 .login-nav-menu .logout {
     padding: 0.5em 1em;
     border-radius: 0.5em;
-    box-shadow: 
-        4px 4px 6px rgba(0,0,0,0.8),
-        inset 3px 3px 5px rgba(255, 255, 255, 0.7),
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.7),
         inset -3px -3px 5px rgba(0, 0, 0, 0.7);
-        background-image: 
-            linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.15) 100%);
-        background-position: top left;
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.15) 30%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+    background-position: top left;
 }
 
 .event-form-wrapper {
@@ -318,18 +354,8 @@ body {
 }
 
 .main-page-link {
-    @include flex-space-between();
     text-decoration: none;
-    color: $text-color;
-    font-family: 'Medium';
-    font-size: $fs-medium;
-}
-
-.main-page-link:hover,
-.main-page-link:focus {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.06em;
-    text-underline-offset: 0.4em;
+    color: #fff;
 }
 
 p.errors {
@@ -364,7 +390,6 @@ p.errors {
 .calendar-group {
     display: flex;
     gap: 2em;
-
 }
 
 #calendar {
@@ -382,7 +407,7 @@ p.errors {
     #calendar {
         width: 100%;
     }
-    
+
     #events {
         width: 100%;
     }
@@ -409,7 +434,6 @@ p.errors {
     border: 1px solid white;
     cursor: pointer;
 }
-
 
 .header-cal {
     text-align: center;
@@ -458,7 +482,6 @@ p.errors {
 
 .docs-heading {
     text-transform: uppercase;
-
 }
 
 .docs-form-wrapper {
