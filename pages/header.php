@@ -15,14 +15,12 @@
     <title>USUS</title>
     <link rel="stylesheet" href="../assets/css/reset.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="../assets/js/jquery.js"></script>
 </head>
 <body>
     <div class="main-outer-wrapper">
         <header class="main-header">
             <div class="logo-wrapper">
-                <h1><a href="main.php" class="main-page-link">USUS</a></h1>
+                <h1><a href="main.php" class="main-page-link"><img src="../assets/images/svgs/logo-small.svg" alt="logo" class="logo-mobile-heading">USUS</a></h1>
             </div>
             <div class="btn-wrapper">
                 <a href="reg.php" class="login" style="display: <?php echo ($first_name === '') ? 'flex' : 'none';?>;">
@@ -33,4 +31,7 @@
                     <a href="../includes/logout.inc.php" class="logout">Выйти</a>
                 </div>
             </div>
+            <a href="reg.php" class="login-mobile" style="display: <?php echo ($first_name === '') ? 'flex' : 'none';?>;">
+                <img src="../assets/images/svgs/user-right-01.svg" alt="logo" class="logo-mobile">
+                </a>
         </header>
