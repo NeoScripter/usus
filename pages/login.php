@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUS</title>
     <link rel="stylesheet" href="../assets/css/reset.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body>
     <div class="main-outer-wrapper">

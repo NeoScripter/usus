@@ -18,14 +18,14 @@ if ($first_name === '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUS</title>
     <link rel="stylesheet" href="../assets/css/reset.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body>
     <div class="main-outer-wrapper">
         <header class="main-header">
             <div class="logo-wrapper">
                 <h1><a href="main.php" class="main-page-link"><img src="../assets/images/svgs/logo-small.svg" alt="logo" class="logo-mobile-heading">USUS</a></h1>
-                <a href="main.php" class="main-page-link__arrow"><img src="../assets/images/svgs/arrow-left.svg" alt="logo"></a>
+                <a href="main.php" class="main-page-link__arrow nav-desktop"><img src="../assets/images/svgs/arrow-left.svg" alt="logo"></a>
             </div>
             <div class="btn-wrapper">
                 <div class="login-nav-menu nav-desktop" style="display: <?php echo ($first_name === '') ? 'none' : '';?>;">
@@ -47,6 +47,7 @@ if ($first_name === '') {
         </header>
         <main>
             <section class="calendar-form-wrapper">
+                <h2>Календарь</h2>
                 <div class="calendar-group">
                     <div id="calendar"></div>
                     <div id="events"></div>

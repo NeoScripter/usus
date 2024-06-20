@@ -300,6 +300,17 @@ a.login:hover {
     display: block;
 }
 
+@keyframes appear {
+    from {
+        opacity: 0;
+        display: none;
+    }
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+
 .nav-mobile {
     display: none;
 }
@@ -331,6 +342,11 @@ a.login:hover {
         border-radius: 2.5em;
         padding: 2em;
         position: relative;
+        width: 40%;
+        margin-inline: auto;
+        @media (max-width: 800px) {
+            width: min(100%, 500px);
+        }
 
         button {
             position: absolute;
@@ -361,6 +377,11 @@ a.login:hover {
 
 .form-wrapper form.create-event-form {
     margin-top: var(--42);
+    width: 50%;
+    margin-inline: auto;
+    @media (max-width: 800px) {
+        width: min(100%, 500px);
+    }
 
     input,
     select,
@@ -411,6 +432,7 @@ a.login:hover {
         form {
             aspect-ratio: 1;
             width: 100%;
+            margin-inline: auto;
 
             input,
             select,
@@ -531,6 +553,8 @@ a.login:hover {
             padding: 2em;
             position: relative;
             background-color: transparent;
+            width: 100%;
+            margin-inline: auto;
 
             input,
             select,
@@ -744,6 +768,7 @@ a.login:hover {
             margin-bottom: var(--15);
         }
         form {
+            width: 100%;
             button {
                 bottom: -60px;
                 font-size: 16px;
@@ -762,6 +787,7 @@ a.login:hover {
 
     .main-leaf-right main {
         width: min(350px, 95%);
+        margin-inline: auto;
     }
     .create-event-form {
         margin-top: 40px;
@@ -816,6 +842,24 @@ p.errors {
 
 .calendar-form-wrapper {
     padding: 1em;
+    margin-top: 6em;
+    color: #000;
+
+    @media (max-width: 800px) {
+        margin-top: 1em;
+    }
+    h2 {
+        font-size: var(--55);
+        color: $field-bg-color;
+        font-family: "Bold";
+        margin-bottom: var(--5);
+        text-align: center;
+        width: 50%;
+        @media (max-width: 800px) {
+            font-size: 25px;
+            width: 100%;
+        }
+    }
 }
 
 .calendar-group {
@@ -825,6 +869,8 @@ p.errors {
 
 #calendar {
     width: 50%;
+    box-shadow: var(--box-shadow);
+    border-radius: 1em;
 }
 
 #events {
@@ -852,17 +898,18 @@ p.errors {
     justify-content: center;
     align-items: center;
     gap: 1em;
+    padding: 0.5em 0;
 }
 
 .header-cal button {
     margin: 0 10px;
-    padding: 5px 10px;
+    padding-bottom: 0.15em;
     width: 2em;
     height: 1em;
     @include flex-centered();
     color: #fff;
-    background-color: #000;
-    border: 1px solid white;
+    background-color: $field-bg-color;
+    border-radius: 1em;
     cursor: pointer;
 }
 
@@ -890,14 +937,15 @@ p.errors {
     box-sizing: border-box;
     text-align: center;
     cursor: pointer;
+    border: 0.02em solid rgba(224, 224, 224, 1);
 }
 
 .date-cell.event-date {
-    background-color: $field-bg-color;
+    color: red;
 }
 
 .date-cell:hover {
-    background-color: $field-bg-color-hover;
+    border: 0.1em solid blue;
 }
 
 #events {
