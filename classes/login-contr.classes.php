@@ -14,7 +14,7 @@ class LoginContr extends Login {
         session_start();
         if ($this->emptyInput() == false) {
             $_SESSION["login_errors"] = "Заполните все поля";
-            header('location: ../pages/reg.php');
+            header('location: ../pages/login.php');
             exit();
         }
 

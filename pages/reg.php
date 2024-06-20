@@ -1,11 +1,10 @@
 <?php
     session_start();
-    $login_errors = isset($_SESSION["login_errors"]) ? $_SESSION["login_errors"] : '';
     $signup_errors = isset($_SESSION["signup_errors"]) ? $_SESSION["signup_errors"] : '';
     if (isset($_SESSION["signup_success"])) {
         echo '<script>alert("Пользователь успешно зарегистрирован!")</script>';
     }
-    unset($_SESSION["login_errors"], $_SESSION["signup_errors"], $_SESSION["signup_success"]);
+    unset($_SESSION["signup_errors"], $_SESSION["signup_success"]);
 
     if (isset($_SESSION["useruid"])) {
         header("location: main.php");
@@ -41,40 +40,30 @@
                 </a>
             </div>
         </header>
-        <main>
-        <section class="options">
-                <div class="desc">
-                    <p>Войдите в систему для того, чтобы получить доступ к работе с секциями "Календарь" и "Мероприятия"</p>
+        <main class="main-leaf-left">
+            <section class="reg-form-section">
+                <div class="form-main-wrapper">
+                    <div class="reg-form-link-wrapper">
+                        <h2>УЖЕ ЕСТЬ АККАУНТ?</h2>
+                        <p>Для того, чтобы продолжить работу введите данные своего аккаунта.</p>
+                        <a href="login.php">Войти</a>
+                    </div>
+                    <div class="main-signup form-wrapper">
+                        <h2>Зарегистрироваться</h2>
+                        <form action="../includes/signup.inc.php" method="post" class="signup-form" autocomplete="on">
+                            <input type="text" name="uid" placeholder="Введите свое ФИО...">
+                            <input type="password" name="pwd" placeholder="Введите пароль">
+                            <input type="password" name="pwdrepeat" placeholder="Повторите пароль">
+                            <select name="company">
+                                <?php foreach($companies as $company):?>
+                                    <option value="<?php echo $company['company_name'];?>"><?php echo $company['company_name'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                            <p class="errors"><?php echo $signup_errors ;?></p>
+                            <button type="submit" name="submit" class="submit-btn">Зарегистрироваться</button>
+                        </form>
+                    </div>
                 </div>
-            <div class="form-main-wrapper">
-                <div class="main-signup form-wrapper">
-                    <h3>Зарегистрироваться</h3>
-                    <p>Введите ваши данные для регистрации</p>
-                    <form action="../includes/signup.inc.php" method="post" class="signup-form" autocomplete="on">
-                        <input type="text" name="uid" placeholder="ФИО">
-                        <input type="password" name="pwd" placeholder="Пароль">
-                        <input type="password" name="pwdrepeat" placeholder="Повторите пароль">
-                        <label for="company">Выберите организацию</label>
-                        <select name="company">
-                            <?php foreach($companies as $company):?>
-                                <option value="<?php echo $company['company_name'];?>"><?php echo $company['company_name'];?></option>
-                            <?php endforeach;?>
-                        </select>
-                        <p class="errors"><?php echo $signup_errors ;?></p>
-                        <button type="submit" name="submit" class="submit-btn">Создать</button>
-                    </form>
-                </div>
-                <div class="main-login form-wrapper">
-                    <h3>Войти</h3>
-                    <p>Нет аккаунта? Создайте учетную запись!</p>
-                    <form action="../includes/login.inc.php" method="post" class="login-form" autocomplete="on">
-                        <input type="text" name="uid" placeholder="Имя">
-                        <input type="password" name="pwd" placeholder="Пароль">
-                        <p class="errors"><?php echo $login_errors ;?></p>
-                        <button type="submit" name="submit" class="submit-btn">Войти</button>
-                    </form>
-                </div>
-            </div>
             </section>
         </main>
     </div>
