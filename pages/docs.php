@@ -46,34 +46,36 @@ $templates = $dbhhandler->fetchTemplates();
                 </a>
             </div>
         </header>
-        <main>
+        <main class="docs-main">
             <h2 class="docs-heading">Организационные документы</h2>
-            <section class="form-wrapper">
-                <form action="../includes/generate-doc.inc.php" class="docs-form" method="post">
-                    <label for="doc-name">Совещание ректора</label>
-                    <select name="doc-name">
-                        <?php foreach ($templates as $template): ?>
-                            <?php if ($template['template_menu'] === 'rector'): ?>
-                                <option value="<?php echo $template['template_url']; ?>"><?php echo $template['template_name']; ?></option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </select>
-                    <button type="submit" class="event-form-btn">Скачать</button>
-                </form>
-            </section>
-            <section class="form-wrapper">
-                <form action="../includes/generate-doc.inc.php" class="docs-form" method="post">
-                    <label for="doc-name">Шаблоны документов</label>
-                    <select name="doc-name">
-                        <?php foreach ($templates as $template): ?>
-                            <?php if ($template['template_menu'] === 'other'): ?>
-                                <option value="<?php echo $template['template_url']; ?>"><?php echo $template['template_name']; ?></option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </select>
-                    <button type="submit" class="prep-form-btn">Скачать</button>
-                </form>
-            </section>
+            <div class="docs-wrapper">
+                <section class="form-wrapper">
+                    <form action="../includes/generate-doc.inc.php" class="docs-form" method="post">
+                        <label for="doc-name">Совещание ректора</label>
+                        <select name="doc-name">
+                            <?php foreach ($templates as $template): ?>
+                                <?php if ($template['template_menu'] === 'rector'): ?>
+                                    <option value="<?php echo $template['template_url']; ?>"><?php echo $template['template_name']; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="event-form-btn">Скачать</button>
+                    </form>
+                </section>
+                <section class="form-wrapper">
+                    <form action="../includes/generate-doc.inc.php" class="docs-form" method="post">
+                        <label for="doc-name">Шаблоны документов</label>
+                        <select name="doc-name">
+                            <?php foreach ($templates as $template): ?>
+                                <?php if ($template['template_menu'] === 'other'): ?>
+                                    <option value="<?php echo $template['template_url']; ?>"><?php echo $template['template_name']; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="prep-form-btn">Скачать</button>
+                    </form>
+                </section>
+            </div>
         </main>
     </div>
     <script src="../assets/js/ajax-event-hd.js"></script>

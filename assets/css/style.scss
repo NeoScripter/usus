@@ -42,9 +42,9 @@ $fs-small: clamp(8px, 0.8vw, 16px);
     --5: 0.26vw;
     --box-shadow: inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4),
         inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4);
-    --box-shadow2: inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4), inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4);
+    --box-shadow2: inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(255, 255, 255, 0.4),
+        inset var(--10) var(--10) var(--10) rgba(0, 0, 0, 0.4);
 }
-
 
 @mixin flex-centered {
     display: flex;
@@ -309,14 +309,14 @@ a.login:hover {
     h2 {
         font-size: var(--55);
         color: $field-bg-color;
-        font-family: 'Bold';
+        font-family: "Bold";
         text-align: center;
         margin-bottom: var(--5);
     }
     h3 {
         color: #000;
-        font-size: calc(var(--30) *1.4);
-        font-family: 'Bold';
+        font-size: calc(var(--30) * 1.4);
+        font-family: "Bold";
         text-align: center;
         margin-bottom: var(--15);
     }
@@ -326,9 +326,6 @@ a.login:hover {
         @include flex-centered();
         flex-direction: column;
         gap: 0.5em;
-        select {
-            max-width: 200px;
-        }
         box-shadow: var(--box-shadow2);
         border-radius: 2.5em;
         padding: 2em;
@@ -361,19 +358,87 @@ a.login:hover {
     }
 }
 
+.form-wrapper form.create-event-form {
+    margin-top: var(--42);
+
+    input,
+    select,
+    option {
+        box-shadow: var(--box-shadow2);
+        border: none;
+        width: 80%;
+        padding: 0.5em 1em;
+        border-radius: 1em;
+        outline: none;
+        color: $field-bg-color;
+        font-family: "Bold";
+        font-weight: 700;
+        letter-spacing: 0.03em;
+    }
+    label {
+        margin-bottom: 0;
+        font-weight: 700;
+    }
+}
+
 .docs-heading {
     font-size: var(--55);
     color: $field-bg-color;
-    font-family: 'Bold';
+    font-family: "Bold";
     text-align: center;
     margin-bottom: var(--5);
     margin-top: var(--80);
 }
 
+.docs-main {
+    width: 100%;
+}
+
+.docs-wrapper {
+    @include flex-centered();
+    gap: 4em;
+    .form-wrapper {
+        flex-basis: 30%;
+
+        @media (max-width: 800px) {
+            width: 70%;
+        }
+        form {
+            aspect-ratio: 1;
+            width: 100%;
+
+            input,
+            select,
+            option {
+                box-shadow:2px 2px 10px 6px rgba(0, 0, 0, 0.1),
+                -2px -2px 10px 6px rgba(0, 0, 0, 0.1);
+                border: none;
+                width: 80%;
+                padding: 0.5em 1em;
+                border-radius: 0.5em;
+                outline: none;
+                color: $field-bg-color;
+                font-family: "Bold";
+                font-weight: 700;
+                letter-spacing: 0.03em;
+            }
+        }
+    }
+    form label {
+        font-size: var(--45);
+        line-height: 1.2;
+        color: $field-bg-color;
+        font-family: "Bold";
+        text-align: center;
+        margin-bottom: var(--5);
+        width: min-content;
+    }
+}
+
 .main-leaf-right {
-    background-image: url(../images/leaf-pattern-big-2.png);
+    background-image: url(../images/leaf-pattern-big-2-mirror.png);
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: left bottom;
     background-size: 50%;
     min-height: 100vh;
 }
@@ -407,7 +472,7 @@ a.login:hover {
 .greeting {
     margin-right: 1.5em;
     color: #fff;
-    font-family: 'Bold';
+    font-family: "Bold";
 }
 
 .logout {
@@ -427,7 +492,6 @@ a.login:hover {
     );
     background-position: top left;
 }
-
 
 @media (max-width: 800px) {
     .nav-desktop {
@@ -490,7 +554,6 @@ a.login:hover {
         padding-bottom: calc(var(--80) * 2);
         h2 {
             font-size: 25px;
-
         }
         h3 {
             font-size: 22px;
@@ -516,12 +579,18 @@ a.login:hover {
     .main-leaf-right main {
         width: min(350px, 95%);
     }
+    .create-event-form {
+        margin-top: 40px;
+    }
+
+    .docs-wrapper {
+        flex-direction: column;
+        gap: 1em;
+    }
 
     :root {
-        --box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4),
-        inset -5px -5px 5px rgba(0, 0, 0, 0.4);
-        --box-shadow2: inset -5px -5px 5px rgba(0, 0, 0, 0.4),
-        inset 5px 5px 5px rgba(255, 255, 255, 0.4);
+        --box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4), inset -5px -5px 5px rgba(0, 0, 0, 0.4);
+        --box-shadow2: inset -5px -5px 5px rgba(255, 255, 255, 0.4), inset 5px 5px 5px rgba(0, 0, 0, 0.4);
     }
 }
 

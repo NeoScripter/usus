@@ -26,7 +26,8 @@
   --5: 0.26vw;
   --box-shadow: inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4),
       inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4);
-  --box-shadow2: inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(0, 0, 0, 0.4), inset var(--10) var(--10) var(--10) rgba(255, 255, 255, 0.4);
+  --box-shadow2: inset calc(var(--10) * -0.8) calc(var(--10) * -0.8) var(--10) rgba(255, 255, 255, 0.4),
+      inset var(--10) var(--10) var(--10) rgba(0, 0, 0, 0.4);
 }
 
 html {
@@ -309,9 +310,6 @@ a.login:hover {
   padding: 2em;
   position: relative;
 }
-.form-wrapper form select {
-  max-width: 200px;
-}
 .form-wrapper form button {
   position: absolute;
   left: 50%;
@@ -337,6 +335,28 @@ a.login:hover {
   padding-inline: 0.5em;
 }
 
+.form-wrapper form.create-event-form {
+  margin-top: var(--42);
+}
+.form-wrapper form.create-event-form input,
+.form-wrapper form.create-event-form select,
+.form-wrapper form.create-event-form option {
+  box-shadow: var(--box-shadow2);
+  border: none;
+  width: 80%;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  outline: none;
+  color: rgb(31, 136, 125);
+  font-family: "Bold";
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.form-wrapper form.create-event-form label {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
 .docs-heading {
   font-size: var(--55);
   color: rgb(31, 136, 125);
@@ -346,10 +366,56 @@ a.login:hover {
   margin-top: var(--80);
 }
 
+.docs-main {
+  width: 100%;
+}
+
+.docs-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+.docs-wrapper .form-wrapper {
+  flex-basis: 30%;
+}
+@media (max-width: 800px) {
+  .docs-wrapper .form-wrapper {
+    width: 70%;
+  }
+}
+.docs-wrapper .form-wrapper form {
+  aspect-ratio: 1;
+  width: 100%;
+}
+.docs-wrapper .form-wrapper form input,
+.docs-wrapper .form-wrapper form select,
+.docs-wrapper .form-wrapper form option {
+  box-shadow: 2px 2px 10px 6px rgba(0, 0, 0, 0.1), -2px -2px 10px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 80%;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  outline: none;
+  color: rgb(31, 136, 125);
+  font-family: "Bold";
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.docs-wrapper form label {
+  font-size: var(--45);
+  line-height: 1.2;
+  color: rgb(31, 136, 125);
+  font-family: "Bold";
+  text-align: center;
+  margin-bottom: var(--5);
+  width: min-content;
+}
+
 .main-leaf-right, .main-leaf-left {
-  background-image: url(../images/leaf-pattern-big-2.png);
+  background-image: url(../images/leaf-pattern-big-2-mirror.png);
   background-repeat: no-repeat;
-  background-position: right bottom;
+  background-position: left bottom;
   background-size: 50%;
   min-height: 100vh;
 }
@@ -476,11 +542,16 @@ a.login:hover {
   .main-leaf-right main, .main-leaf-left main {
     width: min(350px, 95%);
   }
+  .create-event-form {
+    margin-top: 40px;
+  }
+  .docs-wrapper {
+    flex-direction: column;
+    gap: 1em;
+  }
   :root {
-    --box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4),
-    inset -5px -5px 5px rgba(0, 0, 0, 0.4);
-    --box-shadow2: inset -5px -5px 5px rgba(0, 0, 0, 0.4),
-    inset 5px 5px 5px rgba(255, 255, 255, 0.4);
+    --box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4), inset -5px -5px 5px rgba(0, 0, 0, 0.4);
+    --box-shadow2: inset -5px -5px 5px rgba(255, 255, 255, 0.4), inset 5px 5px 5px rgba(0, 0, 0, 0.4);
   }
 }
 .event-form-btn, .prep-form-btn {
